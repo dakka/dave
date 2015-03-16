@@ -1,11 +1,23 @@
-<html>
-    <div>HAVE A NICE day</div>
-    <div>
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            {{ form.name.label }} {{ form.name(size=20) }}
-            {{ form.select.label }} {{ form.select }}
-            <input type="submit">
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}This is an example page{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+      <!-- ... -->
+  </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form class="form form-horizontal" method="post" role="form">
+          {{ form.hidden_tag() }}
+          {{ wtf.form_errors(form, hiddens="only") }}
+          {{ wtf.form_field(form.name) }}
+          {{ wtf.form_field(form.select) }}
         </form>
     </div>
-<html>
+{% endblock %}
+
+
+
