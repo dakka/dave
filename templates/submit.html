@@ -1,0 +1,11 @@
+<html>
+    <div>HAVE A NICE day</div>
+    <div>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.name.label }} {{ form.name(size=20) }}
+            {{ form.select.label }} {{ form.select }}
+            <input type="submit">
+        </form>
+    </div>
+<html>
