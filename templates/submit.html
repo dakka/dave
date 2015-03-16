@@ -22,12 +22,8 @@
 
 {% block content %}
     <div class="container">
-        <form class="form form-horizontal" method="post" role="form">
-          {{ form.hidden_tag() }}
-          {{ wtf.form_errors(form, hiddens="only") }}
-          {{ wtf.form_field(form.name) }}
-          {{ wtf.form_field(form.select) }}
-        </form>
+        {% include "flasher.html" %}
+        {{ wtf.quick_form(form) }}
     </div>
 {% endblock %}
 

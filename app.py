@@ -1,12 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash
 from flask_wtf import Form
-from wtforms import StringField, SelectField
+from wtforms import StringField, SelectField, SubmitField
 from wtforms import validators
 from flask_bootstrap import Bootstrap
 
 class MyForm(Form):
     name = StringField('name', validators=[validators.DataRequired()])
     select = SelectField('Language', choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')])
+    submit_button = SubmitField('OK')
+
 
 SECRET_KEY = 'secret'
 HOST='0.0.0.0'
@@ -21,7 +23,7 @@ app.config.from_object(__name__)
 def submit():
     form = MyForm()
     if form.validate_on_submit():
-        print "wow, I got '%s' lang '%s'" % (form.name.data, form.select.data)
+        flash("%s is the best" % form.select.data)
     return render_template('submit.html', form=form)
 
 
