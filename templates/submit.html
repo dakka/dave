@@ -3,19 +3,27 @@
 {% block title %}This is an example page{% endblock %}
 
 {% block navbar %}
-<div class="navbar navbar-fixed-top">
-      <!-- ... -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li> 
+        <li><a href="#">Page 3</a></li> 
+      </ul>
+    </div>
   </div>
+</nav>
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        <form class="form form-horizontal" method="post" role="form">
-          {{ form.hidden_tag() }}
-          {{ wtf.form_errors(form, hiddens="only") }}
-          {{ wtf.form_field(form.name) }}
-          {{ wtf.form_field(form.select) }}
-        </form>
+        {% include "flasher.html" %}
+        {{ wtf.quick_form(form) }}
     </div>
 {% endblock %}
 
