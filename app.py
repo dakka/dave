@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, SelectField
 from wtforms import validators
+from flask_bootstrap import Bootstrap
 
 class MyForm(Form):
     name = StringField('name', validators=[validators.DataRequired()])
@@ -12,6 +13,7 @@ HOST='0.0.0.0'
 PORT=5000
 
 app = Flask(__name__)
+Bootstrap(app)
 app.config.from_object(__name__)
 
 # /bung is the app route ie. http://192.168.10.1:5000/bung
